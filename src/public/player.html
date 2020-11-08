@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #23272a;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .main {
+            width: 100%;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-flex-wrap: nowrap;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            -webkit-justify-content: flex-start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+            -webkit-align-content: stretch;
+            -ms-flex-line-pack: stretch;
+            align-content: stretch;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .pillcontainer {
+            width: 38%;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-flex-wrap: nowrap;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            -webkit-justify-content: flex-start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+            -webkit-align-content: stretch;
+            -ms-flex-line-pack: stretch;
+            align-content: stretch;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .vod {
+            width: 100%;
+        }
+        input[type="text"]{
+            width: 500px;
+            height: 50px;
+        }
+        .pildora {
+
+            width: 100%;
+            border-radius: 25px;
+            background-color: #7289da;
+            color: #23272a;
+            margin: 1rem 1rem;
+            padding: 1rem 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="main">
+        <div id="vod"></div>
+        <input type="text" id="Search" onkeyup="myFunction()" width="100%" placeholder="Busca algo que se pronuncie durante el stream" >
+        <div class="pillcontainer">
+            <div id="pildoras"></div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.js"
+        integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+    <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+    <script type="text/javascript">
+        let options = {
+            width: 700,
+            height: 350,
+            //channel: "<channel ID>",
+            video: "793829367",
+            //collection: "<collection ID>",
+            // only needed if your site is also embedded on embed.example.com and othersite.example.com
+        };
+        let player = new Twitch.Player("vod", options);
+        player.setVolume(0.5);
+        setTimeout(() => {
+
+        }, 3000)
+        let transcript = [
+            {
+                "text": "en teoría empezó a hablar en el segundo 30 y ese que esto tiene un poco de desfase por las pruebas que he hecho previamente",
+                "startTimestamp": "00:00:31"
+            },
+            {
+                "text": " pero no ya iré viendo un poquitín como como lo solvento pero yo creo que es mientras se mantenga la relación de tiempo entre los mensajes que escribo después poner una opción de oye quiero desfasar todas las píldoras de tiempo 3 segundos ya bastaría",
+                "startTimestamp": "00:00:41"
+            },
+            {
+                "text": " bien pues no sé voy a estar 3 minutos 4 minutos revisando un poquitín tanto productos como el subreddit de 6 project",
+                "startTimestamp": "00:00:58"
+            },
+            {
+                "text": " pues no sé simplemente para poder estar mirando algunas de las cositas que salen por aquí leer y eso que pueda que pueda trabajar el algoritmo obtener los datos que necesito etcétera etcétera voy a ver si va bien sincronizados y parece que va más o menos bien sincronizado",
+                "startTimestamp": "00:01:09"
+            },
+            { "text": " normalmente aquí suele", "startTimestamp": "00:01:31" },
+            {
+                "text": " se suelen mostrar cosas interesantes pero últimamente es de sus deleites como que ha decaído muchísimo",
+                "startTimestamp": "00:01:37"
+            },
+            {
+                "text": " hay mucho promocionado parte que eso es cosa de Reddit",
+                "startTimestamp": "00:01:46"
+            },
+            {
+                "text": " euro your business Adidas reproduzcan directamente",
+                "startTimestamp": "00:01:51"
+            },
+            {
+                "text": " trivia of Microsoft teams bueno hay you a que dice una guía un auto guía para los for startups digo no vamos a leer esto porque como está en inglés y la transcripción la tengo en castellano quiero tener una salida limpia para ver qué tal funciona",
+                "startTimestamp": "00:01:58"
+            },
+            {
+                "text": " el primer soporte la primera herramienta de soporte técnico para telgra no sé qué será esto intuyo que convertirá",
+                "startTimestamp": "00:02:28"
+            },
+            {
+                "text": " no como que tú tienes un panel web y alguien necesita soporte técnico y esto te lo envía a tu telegram y tú le puedes responder desde telegram puede ser",
+                "startTimestamp": "00:02:38"
+            },
+            { "text": " no lo sé", "startTimestamp": "00:02:50" },
+            { "text": " puede ser puede ser porque no", "startTimestamp": "00:02:54" },
+            { "text": " el trillo para Microsoft teams", "startTimestamp": "00:02:57" },
+            {
+                "text": " re Microsoft teams al volante suele ser un poco más para poner Focus en el trabajo creo que esto te lo quita",
+                "startTimestamp": "00:03:02"
+            },
+            { "text": " am", "startTimestamp": "00:03:11" },
+            {
+                "text": " humanizado inteligencia artificial API",
+                "startTimestamp": "00:03:13"
+            },
+            { "text": " puede ser interesante", "startTimestamp": "00:03:20" },
+            { "text": " hola siguiente 2.0", "startTimestamp": "00:03:26" },
+            { "text": " te da reviews del usuario", "startTimestamp": "00:03:30" },
+            { "text": " votos etcétera vale", "startTimestamp": "00:03:34" },
+            {
+                "text": " no entiendo porque Gigi 4.0 lo ponen por aquí como si fuera alguna cosa nueva imagino que será promocionado o algo por el estilo",
+                "startTimestamp": "00:03:38"
+            },
+            {
+                "text": " tienes spam esto lo vi y lo está viendo que lo están poniendo por todos sitios que es una herramienta que bueno se utiliza para bien o para mal pero básicamente por eso un correo en esta aplicación en una caja de texto y automáticamente le suscriba no sé si 100 listas de correos que es para mean",
+                "startTimestamp": "00:03:52"
+            },
+            {
+                "text": " del estilo la CNN o que estás interesado en cosas como Viagra etcétera piedra pero bueno en fin llevo ya cerca de 4 minutos 20 stream voy para hacerlo redondo voy a intentar estar hasta los 5 minutos",
+                "startTimestamp": "00:04:10"
+            },
+            { "text": " y nada estoy como me gusta", "startTimestamp": "00:04:29" },
+            { "text": " a un componente céntrico", "startTimestamp": "00:04:33" },
+            { "text": " para un prototipado rapido", "startTimestamp": "00:04:37" },
+            {
+                "text": " parece pero solo para prototipado no sé",
+                "startTimestamp": "00:04:46"
+            },
+            {
+                "text": " bueno nada ya van a dar los cinco minutos son y 55 así que nada nos vemos en otro a prueba",
+                "startTimestamp": "00:04:51"
+            }
+        ]
+
+        $('body').on('click', 'div.pildora', function (event) {
+            let offsetSeconds = 8
+            let time = event.target.id.split(":")
+            let hours = parseInt(time[0])
+            let minutes = parseInt(time[1])
+            let seconds = parseInt(time[2])
+
+            let timeStamp = ((hours * 60) * 60) + (minutes * 60) + seconds
+            player.seek(timeStamp -offsetSeconds)
+            window.scrollTo(0,0);
+            console.log(timeStamp - offsetSeconds)
+        });
+
+        function createPills() {
+            for (let i = 0; i < transcript.length; i++) {
+                let template = $(`<div>`, { id: transcript[i].startTimestamp, text: transcript[i].text, class: 'pildora' })
+                $('#pildoras').append(template)
+            }
+        }
+
+        function myFunction() {
+            var input = document.getElementById("Search");
+            var filter = input.value.toLowerCase();
+            var nodes = document.getElementsByClassName('pildora');
+
+            for (i = 0; i < nodes.length; i++) {
+                if (nodes[i].innerText.toLowerCase().includes(filter)) {
+                    nodes[i].style.display = "block";
+                } else {
+                    nodes[i].style.display = "none";
+                }
+            }
+        }
+
+        createPills()
+
+    </script>
+</body>
+
+</html>

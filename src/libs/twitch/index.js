@@ -4,17 +4,18 @@ module.exports = class twitchTrack {
     constructor(streamer,id) {
         this.id = id
         this.streamer = streamer;
-        this.startTimeStamp = "";
+        this.startTimeStamp = "00:00:30";
         this.hours = "00";
         this.minutes = "00";
-        this.seconds = "00";
+        this.seconds = "30";
         this.hotswitch = true;
         this.cronoInterval;
-        this.cronoValue= "00:00:00"
+        this.cronoValue= "00:00:30"
         this.twitchSecondsOffset = 9
     }
 
     async getTwitchTimestamp() {
+        /*
         const browser = await puppeteer.launch({ headless: false })
         const page = await browser.newPage()
         await page.goto(`https://twitch.tv/${this.streamer}`)
@@ -35,14 +36,16 @@ module.exports = class twitchTrack {
                 
                 this.cronoInterval = setInterval(() => { this.continueWithCrono() }, 1000);
             }
-        }
+        }*/
+        this.cronoInterval = setInterval(() => { this.continueWithCrono() }, 1000);
     }
 
     setCountWithTwitchTimestamp(){
         let timeStartSpit = this.startTimeStamp.split(":")
+        console.log(this.tim)
         this.hours = timeStartSpit.length == 1 ? '0' + timeStartSpit[0] : timeStartSpit[0]
         this.minutes = timeStartSpit[1]
-        this.seconds = (parseInt(timeStartSpit[2]) - this.twitchSecondsOffset).toString()
+        this.seconds = (parseInt(timeStartSpit[2])).toString()
     }
 
     continueWithCrono() {

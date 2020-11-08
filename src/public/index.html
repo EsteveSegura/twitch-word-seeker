@@ -5,10 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            background-color: #23272a;
+            color: white;
+        }
+
+        #transc {
+            font-size: 50px;
+            font-weight: 800;
+        }
+    </style>
 </head>
 
 <body>
     <h1>sad</h1>
+    <div id="transc"></div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.js"
+        integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.0/socket.io.js"></script>
     <script>
         //Generate random token
@@ -21,19 +36,17 @@
         let timeStampMessage = "00:00:00"
         let testAdd = []
 
-        console.log(token.toString())
         let socket = io.connect(`http://localhost:3000/?token=${token}`);//${token}
 
         socket.on('time', (body) => {
             console.log(body)
             timeStampTwitch = body
         })
-
-        console.log(socket)
         let check = 0;
         let newTimestamp;
+        let outter_transcript = []
         let speech = () => {
-            let x = "lol";
+            //let x = "lol";
 
             let final_transcript = ""
             let recognition = new webkitSpeechRecognition();
@@ -41,44 +54,44 @@
             recognition.lang = "es"
             recognition.continuous = true;
             recognition.interimResults = true;
-
+            recognition.maxAlternatives = 1;
             recognition.start();
             recognition.onresult = (event) => {
                 final_transcript = ''
                 let interim_transcript = '';
 
-                //console.log(event.results)
-                
                 for (let i = event.resultIndex; i < event.results.length; ++i) {
                     if (event.results[i].isFinal) {
                         final_transcript += event.results[i][0].transcript;
+                        outter_transcript = []
                     } else {
-                        if(check == 0){
+                        outter_transcript = interim_transcript.split(" ")
+                        if (check == 0) {
                             newTimestamp = timeStampTwitch
                         }
                         check++;
-                        console.log(newTimestamp)
                         interim_transcript += event.results[i][0].transcript;
-                        console.log(interim_transcript)
+                        $('#transc').text(interim_transcript)
                         //socket.emit('caption', { body: interim_transcript, token: token });
                     }
                 }
-                
+
                 if (final_transcript != '') {
-                    testAdd.push({text: final_transcript, startTimestamp: newTimestamp})
-                    socket.emit('caption',  {body: final_transcript, token:token});
+                    testAdd.push({ text: final_transcript, startTimestamp: newTimestamp })
+                    socket.emit('caption', { text: final_transcript, startTimestamp: newTimestamp });
                     check = 0;
                 }
             };
+
 
             recognition.onend = function () {
                 recognition.start();
             }
         }
 
-        setInterval(() => {
-            console.log(testAdd)
 
+        setInterval(() => {
+            //console.log(testAdd)
         }, 5000);
 
         if (!('webkitSpeechRecognition' in window)) {
